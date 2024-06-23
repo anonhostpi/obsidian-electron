@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "obsidian",
         "vscode",
-        "github"
+        "github",
+        "node"
     ]
 }
