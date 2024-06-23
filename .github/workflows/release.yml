@@ -64,7 +64,7 @@ jobs:
         run: |
           npm install
           npm run build
-          mkdir ${{ env.PLUGIN_NAME }}
+          mkdir ${PLUGIN_ID}
           cp dist/main.js dist/manifest.json ${PLUGIN_ID}
           zip -r ${PLUGIN_ID}.zip ${PLUGIN_ID}
 
