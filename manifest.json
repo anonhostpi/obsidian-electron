@@ -1,0 +1,10 @@
+{
+    "id": "electron",
+    "name": "Exposed Internals",
+    "author": "anonhostpi",
+    "authorUrl": "",
+    "version": "0.0.0-p",
+    "description": "For exposing as many APIs as possible via Templater",
+    "isDesktopOnly": true
+}
+  
