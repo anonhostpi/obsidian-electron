@@ -103,4 +103,4 @@ jobs:
           gh release create "$tag" \
             --title="$tag" \
             --draft \
-            dist/main.js dist/manifest.json dist/styles.css ${{ env.PLUGIN_NAME }}.zip
+            dist/main.js dist/manifest.json ${PLUGIN_ID}.zip
