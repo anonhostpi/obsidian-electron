@@ -6,7 +6,7 @@ on:
       - '*'
 
 env:
-  PLUGIN_NAME: obsidian-electron
+  PLUGIN_NAME: Obsidian Exposed APIs
 
 jobs:
   build:
@@ -19,6 +19,45 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
+
+      - name: Setup environment
+        id: setup_env
+        run: |
+          PLUGIN_REPO = $(basename ${{ github.repository }})
+          PLUGIN_ID = $(echo $PLUGIN_REPO | awk -F'-' '{print $NF}')
+          PLUGIN_AUTHOR = "${{ github.repository_owner }}"
+          PLUGIN_AUTHORURL = "https://github.com/${PLUGIN_AUTHOR}/${PLUGIN_REPO}"
+          PLUGIN_VERSION = ${{ github.ref_name }}
+          PLUGIN_DESCRIPTION = $(gh repo view $PLUGIN_REPO --json description --jq .description)
+          PLUGIN_MINAPPVERSION = "1.0.0"
+          echo "PLUGIN_REPO=${PLUGIN_REPO}" >> $GITHUB_ENV
+          echo "PLUGIN_ID=${PLUGIN_ID}" >> $GITHUB_ENV
+          echo "PLUGIN_AUTHOR=${PLUGIN_AUTHOR}" >> $GITHUB_ENV
+          echo "PLUGIN_AUTHROURL=${PLUGIN_AUTHORURL}" >> $GITHUB_ENV
+          echo "PLUGIN_VERSION=${PLUGIN_VERSION}" >> $GITHUB_ENV
+          echo "PLUGIN_DESCRIPTION=${PLUGIN_DESCRIPTION}" >> $GITHUB_ENV
+          echo "PLUGIN_MINAPPVERSION=${PLUGIN_MINAPPVERSION}" >> $GITHUB_ENV
+
+      - name: Generate manifest.json
+        run: |
+          jq -n \
+            --arg id "${PLUGIN_ID}" \
+            --arg name "${PLUGIN_NAME}" \
+            --arg author "${PLUGIN_AUTHOR}" \
+            --arg authorUrl "{$PLUGIN_AUTHORURL}" \
+            --arg version "${PLUGIN_VERSION}" \
+            --arg description "${PLUGIN_DESCRIPTION}" \
+            --arg minAppVersion ${PLUGIN_MINAPPVERSION}" \
+            --argjson isDesktopOnly true \
+            '{
+              id: $id,
+              name: $name,
+              author: $author,
+              authorUrl: $authorUrl,
+              version: $version,
+              description: $description,
+              isDesktopOnly: $isDesktopOnly
+            }' > manifest.json
 
       - name: Build plugin
         id: build
