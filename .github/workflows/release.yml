@@ -7,7 +7,6 @@ on:
 
 env:
   PLUGIN_NAME: Exposed Internals
-  GH_TOKEN: ${{ github.token }}
 
 jobs:
   build:
@@ -23,6 +22,8 @@ jobs:
 
       - name: Setup environment
         id: setup_env
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           PLUGIN_REPO=$(basename ${{ github.repository }})
           PLUGIN_AUTHOR="${{ github.repository_owner }}"
@@ -44,7 +45,7 @@ jobs:
       - name: Generate manifest.json
         run: |
           jq -n \
-            --arg name "${PLUGIN_NAME}" \
+            --arg name "${{ env.PLUGIN_NAME }}" \
             --arg repo = ${PLUGIN_REPO} \
             --arg author "${PLUGIN_AUTHOR}" \
             --arg authorUrl "{$PLUGIN_AUTHORURL}" \
