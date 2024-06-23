@@ -14,7 +14,8 @@
     "ps1",
     "psm1",
     "psd1",
-    "json"
+    "json",
+    "yml"
   ],
   "folding": true,
   "lineNumbers": true,

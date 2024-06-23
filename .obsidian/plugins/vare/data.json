@@ -1334,6 +1334,62 @@
         }
       ],
       "lastFetch": "2024-06-23T13:40:07.617Z"
+    },
+    "hot-reload": {
+      "id": "hot-reload",
+      "repo": "pjeby/hot-reload",
+      "targetVersion": "0.1.11",
+      "releases": [
+        {
+          "tag_name": "0.1.11",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.10",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.9",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.8",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.7",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.6",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.5",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.4",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.3",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.2",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.1",
+          "prerelease": false
+        },
+        {
+          "tag_name": "0.1.0",
+          "prerelease": false
+        }
+      ],
+      "lastFetch": "2024-06-23T14:13:47.789Z"
     }
   }
 }
