@@ -68,15 +68,15 @@ jobs:
       - name: Populate package.json
         run: |
           jq \
-            --arg name "${PLUGIN_NAME}" \
-            --arg repo = ${PLUGIN_REPO} \
+            --arg name "${{ env.PLUGIN_NAME }}" \
+            --arg repo "${PLUGIN_REPO}" \
             --arg author "${PLUGIN_AUTHOR}" \
             --arg authorUrl "{$PLUGIN_AUTHORURL}" \
             --arg version "${PLUGIN_VERSION}" \
             --arg description "${PLUGIN_DESCRIPTION}" \
             --arg license "${PLUGIN_LICENSE}" \
             --arg id "${PLUGIN_ID}" \
-            --arg minAppVersion ${PLUGIN_MINAPPVERSION}" \
+            --arg minAppVersion "${PLUGIN_MINAPPVERSION}" \
             package.json > package.json.tmp && mv package.json.tmp package.json
 
       - name: Build plugin
