@@ -23,19 +23,21 @@ jobs:
       - name: Setup environment
         id: setup_env
         run: |
-          PLUGIN_REPO = $(basename ${{ github.repository }})
-          PLUGIN_ID = $(echo $PLUGIN_REPO | awk -F'-' '{print $NF}')
-          PLUGIN_AUTHOR = "${{ github.repository_owner }}"
-          PLUGIN_AUTHORURL = "https://github.com/${PLUGIN_AUTHOR}/${PLUGIN_REPO}"
-          PLUGIN_VERSION = ${{ github.ref_name }}
-          PLUGIN_DESCRIPTION = $(gh repo view $PLUGIN_REPO --json description --jq .description)
-          PLUGIN_MINAPPVERSION = "1.0.0"
+          PLUGIN_REPO=$(basename ${{ github.repository }})
+          PLUGIN_AUTHOR="${{ github.repository_owner }}"
+          PLUGIN_AUTHORURL="https://github.com/${PLUGIN_AUTHOR}/${PLUGIN_REPO}"
+          PLUGIN_VERSION=${{ github.ref_name }}
+          PLUGIN_DESCRIPTION=$(gh repo view "${PLUGIN_AUTHOR}/${PLUGIN_REPO}" --json description --jq .description)
+          PLUGIN_LICENSE=$(gh repo view "${PLUGIN_AUTHOR}/${PLUGIN_REPO}" --json licenseInfo '.licenseInfo.spdxId')
+          PLUGIN_ID=${PLUGIN_REPO#obsidian-}
+          PLUGIN_MINAPPVERSION="1.0.0"
           echo "PLUGIN_REPO=${PLUGIN_REPO}" >> $GITHUB_ENV
-          echo "PLUGIN_ID=${PLUGIN_ID}" >> $GITHUB_ENV
           echo "PLUGIN_AUTHOR=${PLUGIN_AUTHOR}" >> $GITHUB_ENV
           echo "PLUGIN_AUTHROURL=${PLUGIN_AUTHORURL}" >> $GITHUB_ENV
           echo "PLUGIN_VERSION=${PLUGIN_VERSION}" >> $GITHUB_ENV
           echo "PLUGIN_DESCRIPTION=${PLUGIN_DESCRIPTION}" >> $GITHUB_ENV
+          echo "PLUGIN_LICENSE=${PLUGIN_LICENSE}" >> $GITHUB_ENV
+          echo "PLUGIN_ID=${PLUGIN_ID}" >> $GITHUB_ENV
           echo "PLUGIN_MINAPPVERSION=${PLUGIN_MINAPPVERSION}" >> $GITHUB_ENV
 
       - name: Generate manifest.json
