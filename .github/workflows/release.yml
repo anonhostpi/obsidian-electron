@@ -72,7 +72,7 @@ jobs:
               description: $description,
               isDesktopOnly: $isDesktopOnly
             }' > manifest.json
-          git branch -m main && git commit -am "chore: :bookmark: bump manifest" && git push origin main
+          git checkout -b main && git commit -am "chore: :bookmark: bump manifest" && git push origin main
 
       - name: Populate package.json
         run: |
