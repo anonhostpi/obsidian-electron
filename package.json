@@ -4,6 +4,10 @@
   "description": "$description",
   "author": "$author",
   "license": "$license",
+  "repository": { 
+    "type": "git", 
+    "url": "$repoUrl" 
+  } 
   "main": "main.js",
   "scripts": {
     "build": "cp main.js dist"
