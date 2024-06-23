@@ -27,7 +27,8 @@ jobs:
         run: |
           PLUGIN_REPO=$(basename ${{ github.repository }})
           PLUGIN_AUTHOR="${{ github.repository_owner }}"
-          PLUGIN_AUTHORURL="https://github.com/${PLUGIN_AUTHOR}/${PLUGIN_REPO}"
+          PLUGIN_AUTHORURL="https://github.com/${PLUGIN_AUTHOR}"
+          PLUGIN_REPOURL="${PLUGIN_AUTHORURL}/${PLUGIN_REPO}"
           PLUGIN_VERSION=${{ github.ref_name }}
           PLUGIN_DESCRIPTION=$(gh repo view "${PLUGIN_AUTHOR}/${PLUGIN_REPO}" --json description --jq .description)
           PLUGIN_LICENSE=$(gh repo view "${PLUGIN_AUTHOR}/${PLUGIN_REPO}" --json licenseInfo --jq '.licenseInfo.name')
@@ -36,6 +37,7 @@ jobs:
           echo "PLUGIN_REPO=${PLUGIN_REPO}" >> $GITHUB_ENV
           echo "PLUGIN_AUTHOR=${PLUGIN_AUTHOR}" >> $GITHUB_ENV
           echo "PLUGIN_AUTHROURL=${PLUGIN_AUTHORURL}" >> $GITHUB_ENV
+          echo "PLUGIN_REPOURL=${PLUGIN_REPOURL}" >> $GITHUB_ENV
           echo "PLUGIN_VERSION=${PLUGIN_VERSION}" >> $GITHUB_ENV
           echo "PLUGIN_DESCRIPTION=${PLUGIN_DESCRIPTION}" >> $GITHUB_ENV
           echo "PLUGIN_LICENSE=${PLUGIN_LICENSE}" >> $GITHUB_ENV
@@ -48,7 +50,8 @@ jobs:
             --arg name "${{ env.PLUGIN_NAME }}" \
             --arg repo "${PLUGIN_REPO}" \
             --arg author "${PLUGIN_AUTHOR}" \
-            --arg authorUrl "{$PLUGIN_AUTHORURL}" \
+            --arg authorUrl "${PLUGIN_AUTHORURL}" \
+            --arg repoUrl "${PLUGIN_REPOURL}" \
             --arg version "${PLUGIN_VERSION}" \
             --arg description "${PLUGIN_DESCRIPTION}" \
             --arg license "${PLUGIN_LICENSE}" \
@@ -67,17 +70,19 @@ jobs:
 
       - name: Populate package.json
         run: |
-          jq \
+          PACKAGE_JSON=$(cat package.json)
+          jq -n \
             --arg name "${{ env.PLUGIN_NAME }}" \
             --arg repo "${PLUGIN_REPO}" \
             --arg author "${PLUGIN_AUTHOR}" \
-            --arg authorUrl "{$PLUGIN_AUTHORURL}" \
+            --arg authorUrl "${PLUGIN_AUTHORURL}" \
+            --arg repoUrl "${PLUGIN_REPOURL}" \
             --arg version "${PLUGIN_VERSION}" \
             --arg description "${PLUGIN_DESCRIPTION}" \
             --arg license "${PLUGIN_LICENSE}" \
             --arg id "${PLUGIN_ID}" \
             --arg minAppVersion "${PLUGIN_MINAPPVERSION}" \
-            package.json > package.json.tmp && mv package.json.tmp package.json
+            "${PACKAGE_JSON}" > package.json.tmp && mv package.json.tmp package.json
 
       - name: Build plugin
         id: build
