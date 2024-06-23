@@ -53,7 +53,7 @@ jobs:
             --arg description "${PLUGIN_DESCRIPTION}" \
             --arg license "${PLUGIN_LICENSE}" \
             --arg id "${PLUGIN_ID}" \
-            --arg minAppVersion ${PLUGIN_MINAPPVERSION}" \
+            --arg minAppVersion "${PLUGIN_MINAPPVERSION}" \
             --argjson isDesktopOnly true \
             '{
               id: $id,
