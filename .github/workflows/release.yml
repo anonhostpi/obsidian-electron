@@ -90,7 +90,7 @@ jobs:
           npm install
           npm run build
           mkdir ${PLUGIN_ID}
-          cp dist/main.js dist/manifest.json dist/src ${PLUGIN_ID}
+          cp -r dist/main.js dist/manifest.json dist/src ${PLUGIN_ID}
           zip -r ${PLUGIN_ID}.zip ${PLUGIN_ID}
 
       - name: Create release
