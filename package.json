@@ -1,5 +1,5 @@
 {
-  "name": "$repoName",
+  "name": "$repo",
   "version": "$version",
   "description": "$description",
   "author": "$author",
