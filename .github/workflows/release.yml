@@ -20,6 +20,11 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Setup environment
         id: setup_env
         env:
