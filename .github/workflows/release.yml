@@ -6,7 +6,7 @@ on:
       - '*'
 
 env:
-  PLUGIN_NAME: Obsidian Exposed APIs
+  PLUGIN_NAME: Exposed Internals
 
 jobs:
   build:
