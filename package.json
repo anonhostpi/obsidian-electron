@@ -10,7 +10,7 @@
   } 
   "main": "main.js",
   "scripts": {
-    "build": "cp main.js dist"
+    "build": "mkdir dist && cp main.js dist"
   },
   "keywords": [
     "obsidian",
