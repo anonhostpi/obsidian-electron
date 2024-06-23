@@ -46,7 +46,7 @@ jobs:
         run: |
           jq -n \
             --arg name "${{ env.PLUGIN_NAME }}" \
-            --arg repo = ${PLUGIN_REPO} \
+            --arg repo "${PLUGIN_REPO}" \
             --arg author "${PLUGIN_AUTHOR}" \
             --arg authorUrl "{$PLUGIN_AUTHORURL}" \
             --arg version "${PLUGIN_VERSION}" \
