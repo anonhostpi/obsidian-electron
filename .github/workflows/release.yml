@@ -78,7 +78,10 @@ jobs:
             --arg id "${PLUGIN_ID}" \
             --arg minAppVersion "${PLUGIN_MINAPPVERSION}" \
             "${PACKAGE_JSON}" > package.json
-          git checkout -b dev && git commit -am "chore: :bookmark: bump manifests" && git push origin dev
+          git checkout -b dev 
+          git add .
+          git commit -m "chore: :bookmark: bump manifests"
+          git push origin dev
 
       - name: Build plugin
         id: build
