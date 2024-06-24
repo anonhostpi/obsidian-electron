@@ -33,7 +33,7 @@ class ModulesAPI {
   constructor( r = require, m = globalThis.module ){
     this.require = r
     
-    if( String.isNullOrWhitespace( process.env.NODE_PATH ) )
+    if( !String.isNullOrWhitespace( process.env.NODE_PATH ) )
       m.paths.push( process.env.NODE_PATH );
 
     this.getSearchPaths = ( dir = "{0}") => {
@@ -55,7 +55,7 @@ class ModulesAPI {
       },
       "cache": {
         get() {
-          return this.require.cache
+          return Module._cache
         }
       }
     })
