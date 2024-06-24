@@ -9,7 +9,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.381Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "tray": {
       "id": "tray",
@@ -25,7 +25,7 @@
           "prerelease": true
         }
       ],
-      "lastFetch": "2024-06-23T13:19:57.843Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "vare": {
       "id": "vare",
@@ -40,7 +40,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.381Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "calendar": {
       "id": "calendar",
@@ -167,7 +167,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.381Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "templater-obsidian": {
       "id": "templater-obsidian",
@@ -294,7 +294,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.381Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "dataview": {
       "id": "dataview",
@@ -421,7 +421,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.381Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "tag-wrangler": {
       "id": "tag-wrangler",
@@ -548,7 +548,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.381Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "table-editor-obsidian": {
       "id": "table-editor-obsidian",
@@ -675,7 +675,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.381Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "recent-files-obsidian": {
       "id": "recent-files-obsidian",
@@ -774,7 +774,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.381Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "text-extractor": {
       "id": "text-extractor",
@@ -861,7 +861,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.382Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "obsidian-outliner": {
       "id": "obsidian-outliner",
@@ -988,7 +988,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.381Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "omnisearch": {
       "id": "omnisearch",
@@ -1115,7 +1115,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:18:08.381Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "vscode-editor": {
       "id": "vscode-editor",
@@ -1142,7 +1142,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:39:42.490Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "execute-code": {
       "id": "execute-code",
@@ -1269,7 +1269,7 @@
           "prerelease": true
         }
       ],
-      "lastFetch": "2024-06-23T13:39:42.489Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "show-hidden-files": {
       "id": "show-hidden-files",
@@ -1333,7 +1333,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-23T13:40:07.617Z"
+      "lastFetch": "2024-06-24T01:51:31.123Z"
     },
     "hot-reload": {
       "id": "hot-reload",
@@ -1394,14 +1394,18 @@
     "exposed-apis": {
       "id": "exposed-apis",
       "repo": "anonhostpi/obsidian-exposed-apis",
-      "targetVersion": "0.0.0-v",
+      "targetVersion": "0.0.1-a",
       "releases": [
+        {
+          "tag_name": "0.0.1-a",
+          "prerelease": true
+        },
         {
           "tag_name": "0.0.0-v",
           "prerelease": true
         }
       ],
-      "lastFetch": "2024-06-23T16:11:38.880Z"
+      "lastFetch": "2024-06-24T01:53:13.664Z"
     }
   }
 }
