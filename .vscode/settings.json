@@ -3,6 +3,7 @@
         "obsidian",
         "vscode",
         "github",
-        "node"
+        "node",
+        "plugin"
     ]
 }

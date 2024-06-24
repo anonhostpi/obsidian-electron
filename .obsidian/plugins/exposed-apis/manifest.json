@@ -1,0 +1,9 @@
+{
+  "id": "exposed-apis",
+  "name": "Exposed Internals",
+  "author": "anonhostpi",
+  "authorUrl": "",
+  "version": "0.0.0-v",
+  "description": "For exposing as many APIs as possible via Templater",
+  "isDesktopOnly": true
+}
