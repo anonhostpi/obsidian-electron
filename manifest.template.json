@@ -1,0 +1,10 @@
+{
+    "id": "$id",
+    "name": "$name",
+    "author": "$author",
+    "authorUrl": "$authorUrl",
+    "repo": "$repo",
+    "version": "$version",
+    "description": "$description",
+    "isDesktopOnly": "$isDesktopOnly"
+}

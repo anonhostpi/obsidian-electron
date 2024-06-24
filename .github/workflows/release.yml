@@ -41,7 +41,7 @@ jobs:
           PLUGIN_MINAPPVERSION="1.0.0"
           echo "PLUGIN_REPO=${PLUGIN_REPO}" >> $GITHUB_ENV
           echo "PLUGIN_AUTHOR=${PLUGIN_AUTHOR}" >> $GITHUB_ENV
-          echo "PLUGIN_AUTHROURL=${PLUGIN_AUTHORURL}" >> $GITHUB_ENV
+          echo "PLUGIN_AUTHORURL=${PLUGIN_AUTHORURL}" >> $GITHUB_ENV
           echo "PLUGIN_REPOURL=${PLUGIN_REPOURL}" >> $GITHUB_ENV
           echo "PLUGIN_VERSION=${PLUGIN_VERSION}" >> $GITHUB_ENV
           echo "PLUGIN_DESCRIPTION=${PLUGIN_DESCRIPTION}" >> $GITHUB_ENV
@@ -51,6 +51,7 @@ jobs:
 
       - name: Generate manifest.json
         run: |
+          MANIFEST_JSON=$(cat manifest.template.json)
           jq -n \
             --arg name "${{ env.PLUGIN_NAME }}" \
             --arg repo "${PLUGIN_REPO}" \
@@ -63,20 +64,11 @@ jobs:
             --arg id "${PLUGIN_ID}" \
             --arg minAppVersion "${PLUGIN_MINAPPVERSION}" \
             --argjson isDesktopOnly true \
-            '{
-              id: $id,
-              name: $name,
-              author: $author,
-              authorUrl: $authorUrl,
-              version: $version,
-              description: $description,
-              isDesktopOnly: $isDesktopOnly
-            }' > manifest.json
-          git checkout -b dev && git commit -am "chore: :bookmark: bump manifest" && git push origin dev
+            "${MANIFEST_JSON}" > manifest.json
 
       - name: Populate package.json
         run: |
-          PACKAGE_JSON=$(cat package.json)
+          PACKAGE_JSON=$(cat package.template.json)
           jq -n \
             --arg name "${{ env.PLUGIN_NAME }}" \
             --arg repo "${PLUGIN_REPO}" \
@@ -88,7 +80,13 @@ jobs:
             --arg license "${PLUGIN_LICENSE}" \
             --arg id "${PLUGIN_ID}" \
             --arg minAppVersion "${PLUGIN_MINAPPVERSION}" \
-            "${PACKAGE_JSON}" > package.json.tmp && mv package.json.tmp package.json
+            "${PACKAGE_JSON}" > package.json
+
+      - name: Push changes
+        run: |
+          git checkout -b dev 
+          git commit -am "chore: :bookmark: bump manifest" 
+          git push origin dev
 
       - name: Build plugin
         id: build
