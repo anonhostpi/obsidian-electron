@@ -63,8 +63,11 @@ class ModulesAPI {
 }
 
 class APIPlugin extends obsidian.Plugin {
-  constructor(){
-    super()
+  async onload(){
+    // await this.loadSettings()
+    // this.addSettingTab(new APISettingsTab(this.app, this))
+    // const { settings } = this
+    internals.plugin = this
 
     Object.defineProperties( this, {
       "obsidian": {
@@ -78,12 +81,6 @@ class APIPlugin extends obsidian.Plugin {
         }
       }
     })
-  }
-  async onload(){
-    // await this.loadSettings()
-    // this.addSettingTab(new APISettingsTab(this.app, this))
-    // const { settings } = this
-    internals.plugin = this
     /*
     this.addCommand({
         id: "command-id",
