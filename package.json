@@ -1,0 +1,25 @@
+{
+  "name": "$repo",
+  "version": "$version",
+  "description": "$description",
+  "author": "$author",
+  "license": "$license",
+  "repository": {
+    "type": "git",
+    "url": "$repoUrl"
+  },
+  "keywords": [
+    "obsidian",
+    "$id"
+  ],
+  "//": "Despite that this module does not include the plugin's main or manifest file, we still want to package it with npm. This is why we copy the files to the dist folder.",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "mkdir dist && cp -r main.js package.json manifest.json src dist"
+  },
+  "type": "module",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "obsidian": "^1.5.7-1"
+  }
+}
