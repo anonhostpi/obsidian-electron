@@ -113,6 +113,7 @@ jobs:
 
       - name: Sync to main branch
         run: |
+          git fetch --all
           git checkout -b main origin/main
           git checkout origin/dev -- main.js manifest.json package.json src .github
           git add main.js manifest.json package.json src .github
