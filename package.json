@@ -1,16 +1,16 @@
 {
-  "name": "$repo",
-  "version": "$version",
-  "description": "$description",
-  "author": "$author",
-  "license": "$license",
+  "name": "obsidian-exposed-apis",
+  "version": "0.0.3-f",
+  "description": "For exposing as many APIs as possible via Templater",
+  "author": "anonhostpi",
+  "license": "MIT License",
   "repository": {
     "type": "git",
-    "url": "$repoUrl"
+    "url": "https://github.com/anonhostpi/obsidian-exposed-apis"
   },
   "keywords": [
     "obsidian",
-    "$id"
+    "exposed-apis"
   ],
   "//": "Despite that this module does not include the plugin's main or manifest file, we still want to package it with npm. This is why we copy the files to the dist folder.",
   "main": "src/index.js",

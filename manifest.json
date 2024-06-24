@@ -1,10 +1,10 @@
 {
-  "id": "$id",
-  "name": "$name",
-  "author": "$author",
-  "authorUrl": "$authorUrl",
-  "repo": "$repo",
-  "version": "$version",
-  "description": "$description",
-  "isDesktopOnly": "$isDesktopOnly"
+  "id": "exposed-apis",
+  "name": "Exposed Internals",
+  "author": "anonhostpi",
+  "authorUrl": "https://github.com/anonhostpi",
+  "repo": "obsidian-exposed-apis",
+  "version": "0.0.3-f",
+  "description": "For exposing as many APIs as possible via Templater",
+  "isDesktopOnly": true
 }
