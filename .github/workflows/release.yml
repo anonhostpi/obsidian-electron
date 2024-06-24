@@ -72,7 +72,7 @@ jobs:
               description: $description,
               isDesktopOnly: $isDesktopOnly
             }' > manifest.json
-          git checkout -b main && git commit -am "chore: :bookmark: bump manifest" && git push origin main
+          git checkout -b dev && git commit -am "chore: :bookmark: bump manifest" && git push origin dev
 
       - name: Populate package.json
         run: |
@@ -96,7 +96,7 @@ jobs:
           npm install
           npm run build
           mkdir ${PLUGIN_ID}
-          cp -r dist/main.js dist/manifest.json dist/src ${PLUGIN_ID}
+          cp -r dist/main.js dist/manifest.json dist/package.json dist/src ${PLUGIN_ID}
           zip -r ${PLUGIN_ID}.zip ${PLUGIN_ID}
 
       - name: Create release
@@ -110,3 +110,11 @@ jobs:
             --title="$tag" \
             --draft \
             dist/main.js dist/manifest.json ${PLUGIN_ID}.zip
+
+      - name: Sync to main branch
+        run: |
+          git checkout -b main origin/main
+          git checkout origin/dev -- main.js manifest.json package.json src .github
+          git add main.js manifest.json package.json src .github
+          git commit -m "chore: :bookmark: sync release to main"
+          git push origin main

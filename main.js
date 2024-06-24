@@ -2,6 +2,8 @@ const obsidian = require("obsidian")
 const Module = require("module")
 const path = require("path")
 
+// WIP: install all of this with npm
+
 if (!String.prototype.format || typeof String.prototype.format !== 'function') {
   String.prototype.format = function() {
     var args = arguments;
