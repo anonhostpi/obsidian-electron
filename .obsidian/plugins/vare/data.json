@@ -1394,8 +1394,12 @@
     "exposed-apis": {
       "id": "exposed-apis",
       "repo": "anonhostpi/obsidian-exposed-apis",
-      "targetVersion": "0.0.1-a",
+      "targetVersion": "0.0.1-b",
       "releases": [
+        {
+          "tag_name": "0.0.1-b",
+          "prerelease": true
+        },
         {
           "tag_name": "0.0.1-a",
           "prerelease": true
@@ -1405,7 +1409,7 @@
           "prerelease": true
         }
       ],
-      "lastFetch": "2024-06-24T01:53:13.664Z"
+      "lastFetch": "2024-06-24T02:03:02.149Z"
     }
   }
 }

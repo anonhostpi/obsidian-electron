@@ -50,3 +50,5 @@ class APIPlugin extends obsidian.Plugin {
         return paths.map( path => path.format( dir ) )
     }
 }
+
+module.exports = APIPlugin

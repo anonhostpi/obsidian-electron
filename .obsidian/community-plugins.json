@@ -14,5 +14,6 @@
   "execute-code",
   "show-hidden-files",
   "vscode-editor",
-  "hot-reload"
+  "hot-reload",
+  "exposed-apis"
 ]
