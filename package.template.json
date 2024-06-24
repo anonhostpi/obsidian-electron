@@ -1,16 +1,16 @@
 {
-  "name": "$repo",
-  "version": "$version",
-  "description": "$description",
-  "author": "$author",
-  "license": "$license",
+  "name": $repo,
+  "version": $version,
+  "description": $description,
+  "author": $author,
+  "license": $license,
   "repository": { 
     "type": "git", 
-    "url": "$repoUrl" 
+    "url": $repoUrl 
   },
   "keywords": [
     "obsidian",
-    "$id"
+    $id
   ],
 
   "//": "This is the npm main file, not the plugin's main file. That one is main.js",
