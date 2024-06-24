@@ -3,7 +3,7 @@
   "name": "Exposed Internals",
   "author": "anonhostpi",
   "authorUrl": "",
-  "version": "0.0.2-b",
+  "version": "0.0.3-a",
   "description": "For exposing as many APIs as possible via Templater",
   "isDesktopOnly": true
 }
