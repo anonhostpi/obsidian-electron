@@ -20,7 +20,7 @@ function StringIsNullOrWhitespace(str) {
 const {
     author: GH_OWNER,
     repo: GH_REPO
-} = require("./manifest.json")
+} = require("manifest.json")
 const NODE_PATH = process.env.NODE_PATH
 if (StringIsNullOrWhitespace(NODE_PATH)) {
     NODE_PATH = execSync("npm root -g", {

@@ -102,7 +102,7 @@ jobs:
           gh release create "$tag" \
             --title="$tag" \
             --draft \
-            dist/main.js dist/manifest.json ${PLUGIN_ID}.zip
+            dist/main.js dist/manifest.json dist/package.json ${PLUGIN_ID}.zip
 
       - name: Sync to main branch
         run: |
