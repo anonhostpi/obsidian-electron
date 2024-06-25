@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "obsidian-exposed-apis": "github:anonhostpi/obsidian-exposed-apis"
+  }
+}
