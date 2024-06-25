@@ -71,6 +71,7 @@ class APIPlugin extends obsidian.Plugin {
     ModulesAPI = ModulesAPI
 
     module = new ModulesAPI()
+    npm
 }
 
 module.exports = APIPlugin

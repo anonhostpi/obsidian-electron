@@ -17,6 +17,7 @@ function StringIsNullOrWhitespace(str) {
     return str == null || str.toString().trim() === ''
 }
 
+console.log( __dirname)
 const {
     author: GH_OWNER,
     repo: GH_REPO
@@ -76,5 +77,11 @@ module.exports = (() => {
         install(package)
     }
 
-    return require(package)
+    const out = require(package)
+    out.npm = {
+        parse: install.parse,
+        install
+    }
+
+    return out
 })()
