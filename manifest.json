@@ -4,7 +4,7 @@
   "author": "anonhostpi",
   "authorUrl": "https://github.com/anonhostpi",
   "repo": "obsidian-exposed-apis",
-  "version": "0.0.3-g",
+  "version": "0.0.3-h",
   "description": "For exposing as many APIs as possible via Templater",
   "isDesktopOnly": true
 }
