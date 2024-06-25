@@ -2,8 +2,9 @@
   "id": "exposed-apis",
   "name": "Exposed Internals",
   "author": "anonhostpi",
-  "authorUrl": "",
-  "version": "0.0.2-b",
+  "authorUrl": "https://github.com/anonhostpi",
+  "repo": "obsidian-exposed-apis",
+  "version": "0.0.3-f",
   "description": "For exposing as many APIs as possible via Templater",
   "isDesktopOnly": true
 }

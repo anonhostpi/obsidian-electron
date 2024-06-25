@@ -1,101 +1,80 @@
-const obsidian = require("obsidian")
-const Module = require("module")
 const path = require("path")
+const {
+    execSync
+} = require("child_process")
 
-if (!String.prototype.format || typeof String.prototype.format !== 'function') {
-  String.prototype.format = function() {
+function StringFormat(tmpl, ...args) {
     var args = arguments;
-    return this.replace(/{(\d+)}/g, function(match, number) { 
-      return typeof args[number] != 'undefined'
-        ? args[number]
-        : match
-      ;
+    args.shift();
+    return tmpl.replace(/{(\d+)}/g, function (match, number) {
+        return typeof args[number] != 'undefined' ?
+            args[number] :
+            match;
     });
-  };
+};
+
+function StringIsNullOrWhitespace(str) {
+    return str == null || str.toString().trim() === ''
 }
 
-if(!String.isNullOrWhitespace || typeof String.isNullOrWhitespace !== 'function'){
-  String.isNullOrWhitespace = function( str ){
-    if( typeof str !== 'string')
-      str = str.toString();
-    return str == null || str.trim() === ''
-  }
+const {
+    author: GH_OWNER,
+    repo: GH_REPO
+} = require("./manifest.json")
+const NODE_PATH = process.env.NODE_PATH
+if (StringIsNullOrWhitespace(NODE_PATH)) {
+    NODE_PATH = execSync("npm root -g", {
+        encoding: 'utf-8'
+    }).toString().trim()
+}
+const OBSIDIAN_PATH = path.join(app.vault.adapter.basePath, app.vault.configDir)
+
+globalThis.module.paths.push(NODE_PATH, path.join(OBSIDIAN_PATH, "node_modules"));
+
+function install(package, global) {
+    package = install.parse(package)
+
+    const cmd = `npm install ${package} ${global ? "-g" : "--prefix ."}`
+    const result = execSync(cmd, {
+        encoding: 'utf-8',
+        cwd: OBSIDIAN_PATH
+    }).toString()
+
+    return {
+        package,
+        result
+    }
 }
 
-const internals = {}
-/*
-class APISettingsTab extends obsidian.PluginSettingTab {
-    
-}
-*/
-
-class ModulesAPI {
-  constructor( r = require, m = globalThis.module ){
-    this.require = r
-    
-    if( String.isNullOrWhitespace( process.env.NODE_PATH ) )
-      m.paths.push( process.env.NODE_PATH );
-
-    this.getSearchPaths = ( dir = "{0}") => {
-      const paths = Module._nodeModulePaths( dir )
-      if( String.isNullOrWhitespace( dir ) )
-          return paths
-      paths.push.apply( paths, m.paths)
-      return paths.map( path => path.format( dir ) )
+install.parse = (package) => {
+    const {
+        owner,
+        repo,
+        branch
+    } = package
+    if (StringIsNullOrWhitespace(owner) || StringIsNullOrWhitespace(repo)) {
+        if (StringIsNullOrWhitespace(package))
+            throw new Error("package name is required")
+    } else {
+        package = `github:${owner}/${repo}`
+        if (!StringIsNullOrWhitespace(branch))
+            package += `#${branch}`
     }
 
-    Object.defineProperties( this, {
-      "paths": {
-        get() {
-          this.getSearchPaths("")
-        },
-        set( dir ){
-          m.paths.push( dir )
-        }
-      },
-      "cache": {
-        get() {
-          return this.require.cache
-        }
-      }
-    })
-  }
+    return package
 }
 
-class APIPlugin extends obsidian.Plugin {
-  async onload(){
-    // await this.loadSettings()
-    // this.addSettingTab(new APISettingsTab(this.app, this))
-    // const { settings } = this
-    internals.plugin = this
-
-    Object.defineProperties( this, {
-      "obsidian": {
-        get() {
-          return this.module.require("obsidian")
-        }
-      },
-      "electron": {
-        get() {
-          return this.module.require("electron")
-        }
-      }
+module.exports = (() => {
+    const package = install.parse({
+        owner: GH_OWNER,
+        repo: GH_REPO
     })
-    /*
-    this.addCommand({
-        id: "command-id",
-        name: "command name"
-        callback: cb
-    })
-    */
-  }
-  // onunload(){}
-  // async loadSettings(){}
-  // async saveSettings(){}
 
-  ModulesAPI = ModulesAPI
+    try {
+        require.resolve(package)
+    } catch {
+        install(package)
+    }
 
-  module = new ModulesAPI()
-}
-
-module.exports = APIPlugin
+    return require(package)
+})

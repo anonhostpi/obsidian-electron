@@ -68,9 +68,11 @@ async function fetchReleases(repository) {
     const response = await (0, import_obsidian.request)({ url: URL });
     const data = await JSON.parse(response);
     const releases = data.map((value) => {
+      var _a;
       return {
         tag_name: value.tag_name,
-        prerelease: value.prerelease
+        prerelease: value.prerelease,
+        manifest_url: (_a = value.assets.find((asset) => asset.name === "manifest.json")) == null ? void 0 : _a.browser_download_url
       };
     });
     return releases;
@@ -79,13 +81,13 @@ async function fetchReleases(repository) {
     console.error(e);
   }
 }
-async function fetchManifest(repository, tag_name) {
-  const URL = `https://raw.githubusercontent.com/${repository}/${tag_name ? tag_name : "HEAD"}/manifest.json`;
+async function fetchManifest(repository, tag_name, url) {
+  url = url ? url : `https://raw.githubusercontent.com/${repository}/${tag_name ? tag_name : "HEAD"}/manifest.json`;
   try {
-    if (!repositoryRegEx.test(repository)) {
+    if (repository && !repositoryRegEx.test(repository)) {
       throw Error("Repository string do not match the pattern!");
     }
-    const response = await (0, import_obsidian.request)({ url: URL });
+    const response = await (0, import_obsidian.request)({ url });
     return await JSON.parse(response);
   } catch (e) {
     e.message = "Failed to fetch the manifest for plugin! " + e.message;
@@ -125,14 +127,14 @@ var PluginDataModal = class extends import_obsidian2.Modal {
         new import_obsidian2.Notice("Github <username>/<repository> do not match the pattern!");
         return;
       }
-      const manifest = await fetchManifest(repo);
-      if (!manifest) {
-        new import_obsidian2.Notice("Github repository could not be found!");
-        return;
-      }
       const releases = await fetchReleases(repo);
       if (!releases || releases.length <= 0) {
         new import_obsidian2.Notice("No releases found for this plugin. May it do not have any.");
+        return;
+      }
+      const manifest = await fetchManifest(void 0, void 0, releases[0].manifest_url) || await fetchManifest(repo, releases[0].tag_name) || await fetchManifest(repo);
+      if (!manifest) {
+        new import_obsidian2.Notice("Github repository could not be found!");
         return;
       }
       const pluginInfo = Object.assign({}, manifest, { repo, releases });
@@ -324,8 +326,10 @@ var VareSettingTab = class extends import_obsidian4.PluginSettingTab {
         }
         if (plugin.targetVersion && plugin.version !== plugin.targetVersion) {
           settings.addExtraButton((button) => button.setIcon(ICON_INSTALL).setTooltip("Install version").onClick(async () => {
+            var _a;
             try {
-              const manifest = await fetchManifest(plugin.repo, plugin.targetVersion);
+              const manifest_url = (_a = plugin.releases.find((release) => release.tag_name === plugin.targetVersion)) == null ? void 0 : _a.manifest_url;
+              const manifest = await fetchManifest(void 0, void 0, manifest_url) || await fetchManifest(plugin.repo, plugin.targetVersion) || await fetchManifest(plugin.repo);
               if (!manifest) {
                 throw Error("No manifest found for this plugin!");
               }

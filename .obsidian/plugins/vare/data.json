@@ -9,7 +9,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.144Z"
     },
     "tray": {
       "id": "tray",
@@ -25,22 +25,23 @@
           "prerelease": true
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.145Z"
     },
     "vare": {
       "id": "vare",
-      "repo": "4Source/vare-obsidian-plugin",
+      "repo": "anonhostpi/vare-obsidian-plugin",
+      "targetVersion": "0.2.0",
       "releases": [
         {
-          "tag_name": "0.1.1",
-          "prerelease": false
+          "tag_name": "0.2.0",
+          "prerelease": true
         },
         {
           "tag_name": "0.1.0",
-          "prerelease": false
+          "prerelease": true
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-25T00:51:02.812Z"
     },
     "calendar": {
       "id": "calendar",
@@ -167,7 +168,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.144Z"
     },
     "templater-obsidian": {
       "id": "templater-obsidian",
@@ -294,7 +295,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.145Z"
     },
     "dataview": {
       "id": "dataview",
@@ -421,7 +422,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.144Z"
     },
     "tag-wrangler": {
       "id": "tag-wrangler",
@@ -548,7 +549,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.145Z"
     },
     "table-editor-obsidian": {
       "id": "table-editor-obsidian",
@@ -675,7 +676,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.145Z"
     },
     "recent-files-obsidian": {
       "id": "recent-files-obsidian",
@@ -774,7 +775,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.145Z"
     },
     "text-extractor": {
       "id": "text-extractor",
@@ -861,7 +862,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.145Z"
     },
     "obsidian-outliner": {
       "id": "obsidian-outliner",
@@ -988,7 +989,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.144Z"
     },
     "omnisearch": {
       "id": "omnisearch",
@@ -1115,7 +1116,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.144Z"
     },
     "vscode-editor": {
       "id": "vscode-editor",
@@ -1142,7 +1143,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.145Z"
     },
     "execute-code": {
       "id": "execute-code",
@@ -1269,7 +1270,7 @@
           "prerelease": true
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.144Z"
     },
     "show-hidden-files": {
       "id": "show-hidden-files",
@@ -1333,7 +1334,7 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T01:51:31.123Z"
+      "lastFetch": "2024-06-24T22:17:53.145Z"
     },
     "hot-reload": {
       "id": "hot-reload",
@@ -1389,35 +1390,45 @@
           "prerelease": false
         }
       ],
-      "lastFetch": "2024-06-24T04:30:42.483Z"
+      "lastFetch": "2024-06-24T22:17:53.144Z"
     },
     "exposed-apis": {
       "id": "exposed-apis",
       "repo": "anonhostpi/obsidian-exposed-apis",
-      "targetVersion": "0.0.2-b",
+      "targetVersion": "0.0.3-f",
       "releases": [
         {
+          "tag_name": "0.0.3-f",
+          "prerelease": true,
+          "manifest_url": "https://github.com/anonhostpi/obsidian-exposed-apis/releases/download/0.0.3-f/manifest.json"
+        },
+        {
           "tag_name": "0.0.2-b",
-          "prerelease": true
+          "prerelease": true,
+          "manifest_url": "https://github.com/anonhostpi/obsidian-exposed-apis/releases/download/0.0.2-b/manifest.json"
         },
         {
           "tag_name": "0.0.2-a",
-          "prerelease": true
+          "prerelease": true,
+          "manifest_url": "https://github.com/anonhostpi/obsidian-exposed-apis/releases/download/0.0.2-a/manifest.json"
         },
         {
           "tag_name": "0.0.1-b",
-          "prerelease": true
+          "prerelease": true,
+          "manifest_url": "https://github.com/anonhostpi/obsidian-exposed-apis/releases/download/0.0.1-b/manifest.json"
         },
         {
           "tag_name": "0.0.1-a",
-          "prerelease": true
+          "prerelease": true,
+          "manifest_url": "https://github.com/anonhostpi/obsidian-exposed-apis/releases/download/0.0.1-a/manifest.json"
         },
         {
           "tag_name": "0.0.0-v",
-          "prerelease": true
+          "prerelease": true,
+          "manifest_url": "https://github.com/anonhostpi/obsidian-exposed-apis/releases/download/0.0.0-v/manifest.json"
         }
       ],
-      "lastFetch": "2024-06-24T04:43:45.860Z"
+      "lastFetch": "2024-06-25T00:51:36.862Z"
     }
   }
 }
